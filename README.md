@@ -4,7 +4,7 @@ requires [node.js](http://nodejs.org) 0.8+
 
 ## installation
 
-    $ npm install cq-metrics-server
+    $ npm install civicquarterly/cq-metrics-server
     $ npm start
 
 ## env variables
