@@ -3,15 +3,25 @@
   "author": "jden <jason@denizac.org>",
   "version": "0.1.0",
   "description": "",
-  "keywords": [""],
+  "keywords": [
+    ""
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node ."
   },
-  "repository": "git@github.com:jden/node-cq-metrics-server.git",
+  "repository": "git@github.com:civicquarterly/cq-metrics-server.git",
   "license": "ISC",
   "readmeFilename": "README.md",
   "devDependencies": {
     "mochi": "0.1.0"
+  },
+  "dependencies": {
+    "googleapis": "^1.0.11",
+    "polyfill-promise": "^1.0.0",
+    "restify": "^2.8.2",
+    "resolved": "^0.3.3",
+    "memoizee": "^0.3.7"
   }
 }
