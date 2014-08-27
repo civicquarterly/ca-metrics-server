@@ -4,14 +4,23 @@ var memoize = require('memoizee')
 require('polyfill-promise')
 var goog = require('googleapis')
 var OAuth2 = goog.auth.OAuth2
-
+goog.options({proxy: 'http://localhost:8888', strictSSL: false})
 var oauthClient = new OAuth2(process.env.GA_CLIENT_ID, process.env.GA_CLIENT_SECRET)
 oauthClient.setCredentials({
   access_token: process.env.GA_ACCESS_TOKEN,
   refresh_token: process.env.GA_REFRESH_TOKEN
 })
 
-function getMonthlyUniques() {
+function refreshAuth() {
+  return new Promise(function (resolve, reject) {
+    oauthClient.refreshAccessToken(function(err, tokens) {
+      if (err) { return reject(err) }
+      return resolve()
+    });
+  })
+}
+
+function getMonthlyUniques(retries) {
     var d = new Date
     var firstOfMonth = d.getFullYear() +'-'+ pad(d.getMonth()+1, 2, 0) + '-01'
 
@@ -23,6 +32,11 @@ function getMonthlyUniques() {
       'metrics': 'ga:users'
     }, function (err, res) {
       if (err) {
+        if (err.code == 401 && !retries) {
+          return refreshAuth().then(function () {
+            return resolve(getMonthlyUniques(1))
+          })
+        }
         return reject(err)
       }
       return resolve(res.rows[0][0])
