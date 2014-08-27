@@ -18,6 +18,10 @@ server.get('/metrics.json', function (req, res) {
   }).then(function (metrics) {
     res.send(metrics)
   })
+  .catch(function (err) {
+    console.error(err)
+    res.send(500,'Server Error')
+  })
 })
 
 server.listen(process.env.PORT, function () {
