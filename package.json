@@ -1,0 +1,17 @@
+{
+  "name": "cq-metrics-server",
+  "author": "jden <jason@denizac.org>",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [""],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "git@github.com:jden/node-cq-metrics-server.git",
+  "license": "ISC",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mochi": "0.1.0"
+  }
+}
