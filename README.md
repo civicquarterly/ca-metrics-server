@@ -15,7 +15,7 @@ requires [node.js](http://nodejs.org) 0.8+
 - *GA_ACCESS_TOKEN* - for a user with access to the Google Analytics profile
 - *GA_REFRESH_TOKEN* - for a user with access to the Google Analytics profile
 - *GA_PROFILE_ID* - the profile id, e.g. "ga:123432"
-
+- *STRIPE_KEY* - key with read access to the stripe account
 
 ## api
 

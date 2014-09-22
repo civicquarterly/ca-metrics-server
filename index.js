@@ -3,6 +3,7 @@ var info = require('./package.json')
 var resolved = require('resolved')
 
 var ga = require('./ga')
+var stripe = require('./stripe')
 
 
 var server = restify.createServer({
@@ -14,7 +15,8 @@ server.use(restify.CORS({origins:['*']}));
 
 server.get('/metrics.json', function (req, res) {
   resolved({
-    monthlyUniques: ga.getMonthlyUniques()
+    monthlyUniques: ga.getMonthlyUniques(),
+    subscribers: stripe.getSubscriberCount()
   }).then(function (metrics) {
     res.send(metrics)
   })
