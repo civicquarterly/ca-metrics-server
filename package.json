@@ -23,6 +23,7 @@
     "restify": "^2.8.2",
     "resolved": "^0.3.3",
     "memoizee": "^0.3.7",
-    "stripe-cohort": "0.0.2"
+    "stripe-cohort": "0.0.2",
+    "mailchimp": "^1.1.0"
   }
 }
